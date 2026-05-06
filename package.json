@@ -1,0 +1,13 @@
+{
+  "name": "word-ai-addin",
+  "version": "1.0.0",
+  "description": "AI智能续写Word插件",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

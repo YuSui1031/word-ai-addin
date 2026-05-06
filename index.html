@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI 智能续写</title>
+  <link rel="stylesheet" href="taskpane.css" />
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>AI 智能续写</h2>
+
+    <div class="status-section">
+      <div id="status-indicator" class="indicator stopped"></div>
+      <span id="status-text">未启动</span>
+    </div>
+
+    <div class="btn-group">
+      <button id="btn-start" class="btn btn-primary" onclick="startListening()">启动续写</button>
+      <button id="btn-stop" class="btn btn-secondary" onclick="stopListening()" disabled>停止续写</button>
+    </div>
+
+    <div class="section">
+      <h3>API 设置</h3>
+      <label for="api-url">API 地址</label>
+      <input id="api-url" type="text" placeholder="https://api.deepseek.com/v1/chat/completions" />
+      <div class="preset-btns">
+        <button class="btn btn-tiny" onclick="fillDeepSeek()">DeepSeek</button>
+        <button class="btn btn-tiny" onclick="fillOpenAI()">OpenAI</button>
+        <button class="btn btn-tiny" onclick="fillZhipu()">智谱GLM</button>
+      </div>
+      <label for="api-key">API Key</label>
+      <input id="api-key" type="password" placeholder="sk-..." />
+      <label for="api-model">模型名称</label>
+      <input id="api-model" type="text" placeholder="deepseek-chat" />
+      <button class="btn btn-small" onclick="saveSettings()">保存设置</button>
+    </div>
+
+    <div class="section">
+      <h3>使用说明</h3>
+      <ul>
+        <li>启动后，停止输入 2 秒自动生成灰色建议</li>
+        <li><b>采纳：</b>在灰色文字<b>后面</b>继续打字，自动转为正式文字</li>
+        <li><b>拒绝：</b>在灰色文字<b>前面</b>打字，或直接编辑灰色文字，建议自动删除</li>
+        <li>采纳/拒绝后，停止输入 2 秒会再次生成</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>日志</h3>
+      <div id="log-area"></div>
+    </div>
+  </div>
+
+  <script src="taskpane.js"></script>
+</body>
+</html>
